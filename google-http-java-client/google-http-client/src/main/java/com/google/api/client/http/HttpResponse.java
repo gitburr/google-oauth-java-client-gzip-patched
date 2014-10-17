@@ -116,6 +116,13 @@ public final class HttpResponse {
   /** Signals whether the content has been read from the input stream. */
   private boolean contentRead;
 
+  /** Determines whether automatic gzip decompression should be enabled for this request.
+  *
+  * Defaults to {@code true}.
+  * */
+ private boolean gzipDecompressionEnabled = true;
+
+
   HttpResponse(HttpRequest request, LowLevelHttpResponse response) throws IOException {
     this.request = request;
     contentLoggingLimit = request.getContentLoggingLimit();
@@ -126,6 +133,7 @@ public final class HttpResponse {
     statusCode = code < 0 ? 0 : code;
     String message = response.getReasonPhrase();
     statusMessage = message;
+    gzipDecompressionEnabled = request.isGzipDecompressionEnabled();
     Logger logger = HttpTransport.LOGGER;
     boolean loggable = loggingEnabled && logger.isLoggable(Level.CONFIG);
     StringBuilder logbuf = null;
@@ -359,7 +367,9 @@ public final class HttpResponse {
         try {
           // gzip encoding (wrap content with GZipInputStream)
           String contentEncoding = this.contentEncoding;
-          if (contentEncoding != null && contentEncoding.contains("gzip")) {
+          if (contentEncoding != null
+              && contentEncoding.contains("gzip")
+              && gzipDecompressionEnabled) {
             lowLevelResponseContent = new GZIPInputStream(lowLevelResponseContent);
           }
           // logging (wrap content with LoggingInputStream)
@@ -525,5 +535,29 @@ public final class HttpResponse {
   public Charset getContentCharset() {
     return mediaType == null || mediaType.getCharsetParameter() == null
         ? Charsets.ISO_8859_1 : mediaType.getCharsetParameter();
+  }
+
+  /**
+   * Return whether automatic gzip decompression is enabled for this request.
+   *
+   * @since 1.??
+   */
+
+  public boolean isGzipDecompressionEnabled() {
+    return gzipDecompressionEnabled;
+  }
+
+  /**
+   * Sets automatic gzip decompression is enabled for this request.
+   *
+   * <p>
+   * The default value is {@code true}.
+   * </p>
+   *
+   * @since 1.??
+   */
+  public HttpResponse setGzipDecompressionEnabled(boolean gzipDecompressionEnabled) {
+    this.gzipDecompressionEnabled = gzipDecompressionEnabled;
+    return this;
   }
 }

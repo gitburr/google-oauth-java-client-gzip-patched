@@ -201,6 +201,13 @@ public final class HttpRequest {
   /** Sleeper. */
   private Sleeper sleeper = Sleeper.DEFAULT;
 
+  /** Determines whether automatic gzip decompression should be enabled for this request. 
+   *
+   * Defaults to {@code true}. 
+   * */
+  private boolean gzipDecompressionEnabled = true;
+
+
   /**
    * @param transport HTTP transport
    * @param requestMethod HTTP request method or {@code null} for none
@@ -1151,6 +1158,30 @@ public final class HttpRequest {
    */
   public HttpRequest setSleeper(Sleeper sleeper) {
     this.sleeper = Preconditions.checkNotNull(sleeper);
+    return this;
+  }
+
+  /**
+   * Return whether automatic gzip decompression is enabled for this request.
+   *
+   * @since 1.??
+   */
+
+  public boolean isGzipDecompressionEnabled() {
+    return gzipDecompressionEnabled;
+  }
+
+  /**
+   * Sets automatic gzip decompression is enabled for this request.
+   *
+   * <p>
+   * The default value is {@code true}.
+   * </p>
+   *
+   * @since 1.??
+   */
+  public HttpRequest setGzipDecompressionEnabled(boolean gzipDecompressionEnabled) {
+    this.gzipDecompressionEnabled = gzipDecompressionEnabled;
     return this;
   }
 }

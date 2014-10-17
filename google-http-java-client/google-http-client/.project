@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
   <name>google-http-client</name>
-  <comment></comment>
-  <projects>
-  </projects>
+  <comment>Google HTTP Client Library for Java. Functionality that works on all supported Java platforms,
+    including Java 5 (or higher) desktop (SE) and web (EE), Android, and Google App Engine. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects/>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
-      <arguments>
-      </arguments>
     </buildCommand>
     <buildCommand>
       <name>org.eclipse.m2e.core.maven2Builder</name>
-      <arguments>
-      </arguments>
     </buildCommand>
   </buildSpec>
   <natures>

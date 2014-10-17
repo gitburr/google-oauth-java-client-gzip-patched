@@ -138,4 +138,5 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+  <version>1.20.0-gzip-patched</version>
 </project>

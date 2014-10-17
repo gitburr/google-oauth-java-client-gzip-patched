@@ -71,6 +71,7 @@
     <dependency>
       <groupId>com.google.oauth-client</groupId>
       <artifactId>google-oauth-client</artifactId>
+      <version>1.20.0-gzip-patched</version>
     </dependency>
     <dependency>
       <groupId>com.google.http-client</groupId>
@@ -88,4 +89,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <version>1.20.0-gzip-patched</version>
 </project>

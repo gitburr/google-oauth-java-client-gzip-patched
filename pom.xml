@@ -78,6 +78,7 @@
     <module>google-oauth-client-servlet</module>
     <module>google-oauth-client-java6</module>
     <module>google-oauth-client-jetty</module>
+    <module>google-http-java-client</module>
   </modules>
 
   <dependencyManagement>

@@ -64,6 +64,7 @@
     <dependency>
       <groupId>com.google.http-client</groupId>
       <artifactId>google-http-client</artifactId>
+      <version>1.20.0-gzip-patched</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
@@ -85,4 +86,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <version>1.20.0-gzip-patched</version>
 </project>
